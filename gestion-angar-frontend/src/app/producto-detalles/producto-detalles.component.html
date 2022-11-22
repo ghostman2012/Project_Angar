@@ -1,0 +1,90 @@
+
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="#">Angar 7</a>
+  
+      <div class="navbar-brand" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a routerLink="productos" (click)="Productos()" class="nav-link">Productos</a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="registrar-producto" class="nav-link" (click)="RegistroProductos()">Registrar Producto</a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="registrar-usuario" class="nav-link" (click)="RegistroUsuarios()">Registrar Usuario</a>
+              </li>
+        </ul>
+      </div>
+          <form class="form-inline">
+            <button class="btn btn-dark my-2 my-sm-0" type="button" (click)="cerrarSesion()">Cerrar Sesión</button>
+          </form>
+    </div>
+    </nav>
+  </div>
+  <br>
+  <div class="container">
+<h3>Detalles del Producto</h3>
+<div>
+    <div>
+        <label><b>ID: </b> {{producto.idProducto}}</label>
+    </div>
+    <div>
+        <label><b>Producto: </b> {{producto.nombre}}</label>
+    </div>
+    <div>
+        <label><b>Código Lote: </b> {{producto.codLote}}</label>
+    </div>
+    <div>
+        <label><b>Cantidad: </b> {{producto.cantidad}}</label>
+    </div>
+    <div>
+        <label><b>Precio: </b> {{producto.precio}}</label>
+    </div>
+    <div>
+        <label><b>Color: </b> {{producto.color}}</label>
+    </div>
+    <div>
+        <label><b>Talla: </b> {{producto.talla}}</label>
+    </div>
+    <div>
+        <label><b>Modelo: </b> {{producto.modelo}}</label>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #proformaForm="ngForm">
+        <div class="form-group row">
+            <label class="col-sm-1 col-form-label"><b>Cantidad:</b></label>
+            <div class="col-sm-4">
+            <input type="text"
+            class="form-control"
+            id="cantidadUsuario"
+            [(ngModel)]="proforma.cantidadUsuario"
+            name = "cantidadUsuario"
+            required
+            minlength="1"
+            maxlength="50"
+            placeholder="Digite la cantidad"
+            #cantidadUsuario = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="cantidadUsuario.invalid && (cantidadUsuario.dirty || cantidadUsuario.touched)">
+                <div *ngIf="cantidadUsuario.errors.required">
+                    Digite la cantidad por favor
+                </div>
+                <div *ngIf="cantidadUsuario.errors.minlength">
+                    La cantidad tiene que contener como mínimo 1 caracter
+                </div>
+                <div *ngIf="cantidadUsuario.errors.maxlength">
+                     La cantidad tiene que contener como máximo 50 caracteres
+                </div>
+            </div>
+            </div>
+        </div>
+      
+        <br>
+        <button class="btn btn-success" [disabled]="!proformaForm.form.valid">Guardar</button>
+    </form>
+</div>
+</div>
+  
+

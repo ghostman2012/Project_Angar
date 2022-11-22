@@ -1,0 +1,83 @@
+
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="#">Angar 7</a>
+  
+      <div class="navbar-brand" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a routerLink="productos" (click)="Productos()" class="nav-link">Productos</a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="registrar-producto" class="nav-link" (click)="RegistroProductos()">Registrar Producto</a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="registrar-usuario" class="nav-link" (click)="RegistroUsuarios()">Registrar Usuario</a>
+              </li>
+        </ul>
+      </div>
+          <form class="form-inline">
+            <button class="btn btn-dark my-2 my-sm-0" type="button" (click)="cerrarSesion()">Cerrar Sesión</button>
+          </form>
+    </div>
+    </nav>
+  </div>
+  <br>
+  <div class="container">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<div class="table-responsive" id="htmlData">
+    <table class="table table-striped" id="ejemplo">
+        <thead class="table-dark">
+            <tr>
+                <th>Producto</th>
+                <th>Código Lote</th>
+                <th>Stock</th>
+                <th>Precio Unitario</th>
+                <th>Color</th>
+                <th>Talla</th>
+                <th>Modelo</th>
+                <th>Cant Requerida</th>
+                <th>Precio Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let proforma of proforma">
+                <td>{{proforma.nombre}}</td>
+                <td>{{proforma.codLote}}</td>
+                <td>{{proforma.cantidad}}</td>
+                <td>{{proforma.precio}}</td>
+                <td>{{proforma.color}}</td>
+                <td>{{proforma.talla}}</td>
+                <td>{{proforma.modelo}}</td>
+                <td>{{proforma.cantidadUsuario}}</td>
+                <td>S/.{{ proforma.precio * proforma.cantidadUsuario}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Monto Total: S/. {{totalProforma}}</th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+    
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <button class="btn col col-lg-4 btn-dark btn-block ml-4" (click)="downloadPDF()">Descargar PDF</button>
+            </div>
+        </div>
+    </div>
+  </div>

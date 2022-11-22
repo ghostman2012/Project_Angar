@@ -1,0 +1,137 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="#">Angar 7</a>
+  
+      <div class="navbar-brand" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a routerLink="productos" (click)="Productos()" class="nav-link">Productos</a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="registrar-producto" class="nav-link" (click)="RegistroProductos()">Registrar Producto</a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="registrar-usuario" class="nav-link" (click)="RegistroUsuarios()">Registrar Usuario</a>
+              </li>
+        </ul>
+      </div>
+          <form class="form-inline">
+            <button class="btn btn-dark my-2 my-sm-0" type="button" (click)="cerrarSesion()">Cerrar Sesión</button>
+          </form>
+    </div>
+    </nav>
+  </div>
+  <br>
+  <div class="container">
+
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Registro de Usuario</h3>
+    <form (ngSubmit)="onSubmit()" #usuarioForm="ngForm">
+        <div class="form-group">
+            <label>Apellidos y Nombres</label>
+            <input type="text"
+            class="form-control"
+            id="nomApe"
+            [(ngModel)]="usuario.nomApe"
+            name = "nomApe"
+            required
+            minlength="4"
+            maxlength="50" 
+            placeholder="Digite sus Apellidos y Nombres"
+            #nomApe = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="nomApe.invalid && (nomApe.dirty || nomApe.touched)">
+                <div *ngIf="nomApe.errors.required">
+                    Digite sus nombres y apellidos por favor
+                </div>
+                <div *ngIf="nomApe.errors.minlength">
+                    Sus nombres y apellidos tiene que contener como mínimo 4 caracteres
+                </div>
+                <div *ngIf="nomApe.errors.maxlength">
+                    Sus nombres y apellidos tiene que contener como máximo 50 caracteres
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label>Correo</label>
+            <input type="email"
+            class="form-control"
+            id="correo"
+            [(ngModel)]="usuario.correo"
+            name = "correo"
+            pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+            required
+            placeholder="Digite su Correo"
+            #correo = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                <div *ngIf="correo.errors.required">
+                    Digite su correo por favor
+                </div>
+                <div *ngIf="correo.errors.pattern">
+                    Por favor digite el correo con el siguiente formato: user100@gmail.com
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label>Usuario</label>
+            <input type="text"
+            class="form-control"
+            id="usuario"
+            [(ngModel)]="usuario.usuario"
+            name = "usuario"
+            required
+            minlength="1"
+            maxlength="50"
+            placeholder="Digite su Usuario"
+            #valusuario = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="valusuario.invalid && (valusuario.dirty || valusuario.touched)">
+                <div *ngIf="valusuario.errors.required">
+                    Digite su usuario por favor
+                </div>
+                <div *ngIf="valusuario.errors.minlength">
+                    Su usuario tiene que contener como mínimo 1 caracteres
+                </div>
+                <div *ngIf="valusuario.errors.maxlength">
+                    Sus usuario tiene que contener como máximo 50 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password"
+            class="form-control"
+            id="contrasena"
+            [(ngModel)]="usuario.contrasena"
+            name = "contrasena"
+            required
+            minlength="1"
+            maxlength="50"
+            placeholder="Digite su Contraseña"
+            #contrasena = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)">
+                <div *ngIf="contrasena.errors.required">
+                    Digite su contraseña por favor
+                </div>
+                <div *ngIf="contrasena.errors.minlength">
+                    Su contraseña tiene que contener como mínimo 1 caracteres
+                </div>
+                <div *ngIf="contrasena.errors.maxlength">
+                    Sus contraseña tiene que contener como máximo 50 caracteres
+                </div>
+            </div>
+        </div>
+       
+        <br>
+        <button class="btn btn-success" [disabled]="!usuarioForm.form.valid">Guardar</button>
+    </form>
+</div>
+</div>

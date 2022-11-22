@@ -1,0 +1,61 @@
+<br><br><br>
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="login-form bg-light mt-4 p-4">
+            <form (ngSubmit)="onSubmit()" #usuarioForm="ngForm" class="row g-3">
+                <h4>Bienvenido a Angar7</h4>
+                <div class="col-12">
+                    <label>Usuario</label>
+                    <input type="text" class="form-control" placeholder="Usuario"
+                    id="usuario" 
+                    [(ngModel)]="usuarios.usuario"
+                    name = "usuario"
+                    required
+                    minlength="1"
+                    maxlength="50"
+                    placeholder="Digite su Usuario"
+                    #valusuario = "ngModel"
+                    >
+                    <div class="alert alert-danger" *ngIf="valusuario.invalid && (valusuario.dirty || valusuario.touched)">
+                        <div *ngIf="valusuario.errors.required">
+                            Digite su usuario por favor
+                        </div>
+                        <div *ngIf="valusuario.errors.minlength">
+                            Su usuario tiene que contener como mínimo 1 caracteres
+                        </div>
+                        <div *ngIf="valusuario.errors.maxlength">
+                            Sus usuario tiene que contener como máximo 50 caracteres
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label>Contraseña</label>
+                    <input type="password" class="form-control" placeholder="Contraseña"
+                    id="contrasena"
+                    [(ngModel)]="usuarios.contrasena"
+                    name = "contrasena"
+                    required
+                    minlength="1"
+                    maxlength="50"
+                    placeholder="Digite su Contraseña"
+                    #contrasena = "ngModel"
+                    >
+                        <div class="alert alert-danger" *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)">
+                            <div *ngIf="contrasena.errors.required">
+                                Digite su contraseña por favor
+                            </div>
+                            <div *ngIf="contrasena.errors.minlength">
+                                Su contraseña tiene que contener como mínimo 1 caracteres
+                            </div>
+                            <div *ngIf="contrasena.errors.maxlength">
+                                Sus contraseña tiene que contener como máximo 50 caracteres
+                            </div>
+                        </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-dark float-end" [disabled]="!usuarioForm.form.valid">Ingresar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

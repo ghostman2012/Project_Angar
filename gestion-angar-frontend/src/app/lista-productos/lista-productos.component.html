@@ -1,0 +1,78 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="#">Angar 7</a>
+  
+      <div class="navbar-brand" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a routerLink="productos" (click)="Productos()" class="nav-link">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="registrar-producto" class="nav-link" (click)="RegistroProductos()">Registrar Producto</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="registrar-usuario" class="nav-link" (click)="RegistroUsuarios()">Registrar Usuario</a>
+          </li>
+        </ul>
+      </div>
+          <form class="form-inline">
+            <button class="btn btn-dark my-2 my-sm-0" type="button" (click)="cerrarSesion()">Cerrar Sesión</button>
+          </form>
+    </div>
+    </nav>
+  </div>
+  <br>
+  <div class="container">
+
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <input type="text" name="buscar" [(ngModel)]="searchText" class="form-control" placeholder="Buscar...">
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Producto</th>
+            <th>Código Lote</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Color</th>
+            <th>Talla</th>
+            <th>Modelo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of productos| filter:searchText">
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.codLote}}</td>
+            <td>{{producto.cantidad}}</td>
+            <td>{{producto.precio}}</td>
+            <td>{{producto.color}}</td>
+            <td>{{producto.talla}}</td>
+            <td>{{producto.modelo}}</td>
+            <td>
+                <button (click)="actualizarProducto(producto.idProducto)" class="btn btn-ifo">Editar</button>
+                <button (click)="eliminarProducto(producto.idProducto )" class="btn btn-ifo">Eliminar</button>
+                <button (click)="verDetallesDelProducto(producto.idProducto )" class="btn btn-ifo">Proforma</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<br>
+  
+  <div class="row">
+    <div class="col text-center">
+      <button class="btn btn-dark" (click)="listaProforma()">Generar Proforma</button>
+    </div>
+  </div>
+</div>
